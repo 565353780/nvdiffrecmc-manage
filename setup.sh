@@ -1,5 +1,5 @@
 cd ..
-git clone https://github.com/NVlabs/nvdiffrec.git
+git clone https://github.com/NVlabs/nvdiffrecmc.git
 
 pip install torch torchvision torchaudio \
   --extra-index-url https://download.pytorch.org/whl/cu113
