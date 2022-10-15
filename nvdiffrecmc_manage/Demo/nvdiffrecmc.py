@@ -235,7 +235,8 @@ def optimize_mesh(denoiser,
             remaining_time = (FLAGS.iter - it) * iter_dur_avg
             print(
                 "iter=%5d, img_loss=%.6f, reg_loss=%.6f, lr=%.5f, time=%.1f ms, rem=%s"
-                % (it, img_loss_avg, reg_loss_avg, 0.0, iter_dur_avg * 1000,
+                % (it, img_loss_avg, reg_loss_avg,
+                   optimizer.param_groups[0]['lr'], iter_dur_avg * 1000,
                    util.time_to_text(remaining_time)))
 
     return geometry, opt_material
@@ -253,7 +254,8 @@ def demo():
     FLAGS.batch = 1
     FLAGS.learning_rate = [0.03, 0.005]
     FLAGS.dmtet_grid = 128
-    FLAGS.mesh_scale = 3.0
+    # TODO: IMPORTANT! need to adjust for each model's size!!!!
+    FLAGS.mesh_scale = 3.2
     FLAGS.validate = True
     FLAGS.n_samples = 8
     FLAGS.laplace_scale = 6000
